@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="440" viewBox="0 0 1100 440" role="img" aria-labelledby="t d">
+  <title id="t">Ventil8 airflow overview</title><desc id="d">Conceptual outdoor air, supply, workshop, capture, filtration, and exhaust flow.</desc>
+  <defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0L9 3L0 6Z" fill="#38bdf8"/></marker></defs>
+  <rect width="1100" height="440" rx="24" fill="#081821"/>
+  <text x="50" y="65" fill="white" font-family="Segoe UI,Arial" font-size="32" font-weight="700">VENTIL8 · CONCEPTUAL AIRFLOW</text>
+  <g fill="#102c3b" stroke="#38bdf8" stroke-width="2"><rect x="45" y="160" width="150" height="100" rx="14"/><rect x="245" y="160" width="160" height="100" rx="14"/><rect x="455" y="130" width="230" height="160" rx="14"/><rect x="735" y="160" width="145" height="100" rx="14"/><rect x="930" y="160" width="130" height="100" rx="14"/></g>
+  <g stroke="#38bdf8" stroke-width="6" marker-end="url(#a)"><line x1="195" y1="210" x2="238" y2="210"/><line x1="405" y1="210" x2="448" y2="210"/><line x1="685" y1="210" x2="728" y2="210"/><line x1="880" y1="210" x2="923" y2="210"/></g>
+  <g fill="white" font-family="Segoe UI,Arial" font-size="20" text-anchor="middle"><text x="120" y="205">Outdoor</text><text x="120" y="232">air</text><text x="325" y="205">Supply /</text><text x="325" y="232">make-up</text><text x="570" y="200">Workshop</text><text x="570" y="228">diffusers +</text><text x="570" y="256">source capture</text><text x="808" y="205">Filter /</text><text x="808" y="232">exhaust fan</text><text x="995" y="205">Safe</text><text x="995" y="232">discharge</text></g>
+  <text x="50" y="390" fill="#94a3b8" font-family="Segoe UI,Arial" font-size="17">Concept only — final airflow and equipment require real geometry, hazards, code review, and balancing.</text>
+</svg>
