@@ -2,6 +2,8 @@
 
 [![Test duct sizing](https://github.com/impateltirth/ventil8/actions/workflows/test.yml/badge.svg)](https://github.com/impateltirth/ventil8/actions/workflows/test.yml)
 
+![Ventil8 conceptual airflow](docs/airflow-overview.svg)
+
 Ventilation layout for a small manufacturing workshop, drafted in AutoCAD: supply/exhaust duct routing, diffuser locations, equipment connections, and airflow schematics across drawing layers — with Paper Space construction drawings (scaled floor plans, duct section details, installation callouts).
 
 **Stack:** AutoCAD · Mechanical drafting · Schematics
@@ -15,6 +17,7 @@ Ventilation layout for a small manufacturing workshop, drafted in AutoCAD: suppl
 | `docs/layer-standard.md` | CAD layer scheme for the drawing set |
 | `docs/drawing-index.md` | Sheet index (M-001…) |
 | `docs/system-schematic.md` | Conceptual supply/exhaust airflow diagram |
+| `docs/field-data-checklist.md` | Inputs required before construction drawings |
 | `cad/` | Export drop-point for sheet PDFs / DWG |
 
 ## Duct sizing
