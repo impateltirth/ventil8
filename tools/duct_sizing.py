@@ -45,6 +45,10 @@ VEL_WARN_FPM = 1800  # flag velocities above typical low-velocity practice
 
 def friction_rate(cfm, dia_in):
     """Return (in.wg per 100 ft, velocity fpm) for round duct."""
+    if cfm <= 0:
+        raise ValueError("airflow must be greater than zero CFM")
+    if dia_in <= 0:
+        raise ValueError("duct diameter must be greater than zero")
     d_ft = dia_in / 12.0
     area = math.pi * d_ft ** 2 / 4.0
     v_fpm = cfm / area
@@ -62,6 +66,10 @@ def size_duct(cfm, target_fr=0.08):
 
     Returns (diameter_in, actual_fr, velocity_fpm, over_target).
     """
+    if cfm <= 0:
+        raise ValueError("airflow must be greater than zero CFM")
+    if target_fr <= 0:
+        raise ValueError("target friction rate must be greater than zero")
     for d in STANDARD_DIA_IN:
         fr, v = friction_rate(cfm, d)
         if fr <= target_fr:
@@ -82,11 +90,21 @@ def parse_fittings(spec):
         if name not in FITTING_LEQ_FT:
             raise ValueError("unknown fitting '%s' (known: %s)"
                              % (name, ", ".join(sorted(FITTING_LEQ_FT))))
-        out.append((name, int(count)))
+        if not count:
+            raise ValueError("fitting '%s' must include a count" % name)
+        try:
+            quantity = int(count)
+        except ValueError as exc:
+            raise ValueError("fitting '%s' count must be an integer" % name) from exc
+        if quantity < 0:
+            raise ValueError("fitting '%s' count cannot be negative" % name)
+        out.append((name, quantity))
     return out
 
 
 def size_segment(name, cfm, length_ft, fittings, target_fr=0.08):
+    if length_ft < 0:
+        raise ValueError("straight duct length cannot be negative")
     dia, fr, vel, over = size_duct(cfm, target_fr)
     leq = sum(FITTING_LEQ_FT[n] * c for n, c in fittings)
     total_len = length_ft + leq
@@ -131,10 +149,13 @@ def main():
     if args.example:
         example()
         return
-    if not args.cfm:
+    if args.cfm is None:
         ap.error("--cfm is required (or use --example)")
-    size_segment("Segment", args.cfm, args.length,
-                 parse_fittings(args.fittings), args.target_fr)
+    try:
+        size_segment("Segment", args.cfm, args.length,
+                     parse_fittings(args.fittings), args.target_fr)
+    except ValueError as exc:
+        ap.error(str(exc))
 
 
 if __name__ == "__main__":
